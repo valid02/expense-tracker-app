@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
+import ToggleTheme from "./components/ToggleTheme/ToggleTheme";
 
 const DUMMY_EXPENSES = [
   {
@@ -53,6 +54,7 @@ const App = () => {
 
   return (
     <div>
+      <ToggleTheme />
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>

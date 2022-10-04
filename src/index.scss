@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "vazir";
+  src: url("./font/Vazir.eot") format("eot"),
+       url("./font/Vazir.woff") format("woff"),
+       url("./font/Vazir.ttf") format("truetype");
+}
+
+html[dark] {
+  --bg-color: #433647;
+}
+
+html {
+  --bg-color: #cdafd6;
+}
+
+body {
+  margin: 0;
+  font-family: vazir, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+  
+  background-color: var(--bg-color);
+}
+
+* {
+  box-sizing: border-box;
+}
