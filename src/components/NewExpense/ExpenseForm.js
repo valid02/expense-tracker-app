@@ -1,5 +1,9 @@
-import { useState } from 'react'; 
+import React, { useState } from 'react'; 
 
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+import "react-multi-date-picker/styles/backgrounds/bg-dark.css";
 import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
@@ -15,9 +19,9 @@ const ExpenseForm = (props) => {
     setEnteredAmount(event.target.value);
   }
 
-  const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
-  }
+  // const dateChangeHandler = (event) => {
+  //   setEnteredDate(event.target.value);
+  // }
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -35,25 +39,33 @@ const ExpenseForm = (props) => {
     setEnteredDate('');
   }
 
+  const weekDays = ["ش", "ی", "د", "س", "چ", "پ", "ج"]
+
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <label>Title</label>
+          <label>عنوان</label>
           <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
         </div>
         <div className="new-expense__control">
-          <label>Amount</label>
+          <label>قیمت</label>
           <input type="number" min="0.01" step="0.01" value={enteredAmount} onChange={amountChangeHandler} />
         </div>
-        <div className="new-expense__control">
-          <label>Date</label>
-          <input type="date" min="2019-01-01" max="2022-12-31" value={enteredDate} onChange={dateChangeHandler} />
+        <div className='new-expense__control'>
+          <label>تاریخ</label>
+          <DatePicker
+            className={props.checkedToggle ? 'bg-dark' : ''}
+            weekDays={weekDays}
+            calendar={persian}
+            locale={persian_fa}
+            calendarPosition="bottom-right"
+          />
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="button" onClick={props.onCancel}>Cancel</button>
-        <button type="submit">Add Expense</button>
+        <button type="button" onClick={props.onCancel}>لغو</button>
+        <button type="submit">اضافه کردن</button>
       </div>
     </form>
   );

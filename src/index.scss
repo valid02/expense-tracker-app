@@ -6,19 +6,30 @@
 }
 
 html[dark] {
-  --bg-color: #433647;
+  --bg-color-1: #35414A;
+  --bg-color-2: #20272d;
+  --btn-bg-color: #3a5368;
+  --btn-hover-bg-color: #5f7586;
+  --text-color-1: #dfdfdf;
+  --color-white: #fff;
+  --color-black: #000;
 }
 
 html {
-  --bg-color: #cdafd6;
+  --bg-color-1: #edf5fc;
+  --bg-color-2: #fdfefe;
+  --btn-bg-color: #39474d;
+  --btn-hover-bg-color: #495763;
+  --text-color-1: #14192f;
+  --color-white: #fff;
+  --color-black: #000;
 }
 
 body {
   margin: 0;
   font-family: vazir, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  letter-spacing: 1px;
   
-  background-color: var(--bg-color);
+  background-color: var(--bg-color-1);
 }
 
 * {

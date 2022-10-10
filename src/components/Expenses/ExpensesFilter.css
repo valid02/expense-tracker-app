@@ -1,5 +1,5 @@
 .expenses-filter {
-  color: white;
+  color: var(--text-color-1);
   padding: 0 1rem;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .expenses-filter label {
-  font-weight: bold;
+  font-size: 20px;
   margin-bottom: 0.5rem;
 }
 

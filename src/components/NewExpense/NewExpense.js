@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const NewExpense = (props) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -26,16 +28,16 @@ const NewExpense = (props) => {
   }
 
   return (
-    <div className='new-expense'>
-    {!isEditing && (
-      <button onClick={startEditingHandler}>Add New Expense</button>
-    )}
-    {isEditing && (
-      <ExpenseForm 
-        onSaveExpenseData={saveExpenseDataHandler} 
-        onCancel={stopEditingHandler}
-      />
-    )}
+    <div className="new-expense">
+      {!isEditing && (
+        <>
+          <span className='new-expense__title'>اضافه کردن هزینه جدید</span>
+          <button onClick={startEditingHandler} title="اضافه کردن هزینه جدید">
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+        </>
+      )}
+      {isEditing && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancel={stopEditingHandler} checkedToggle={props.chechedToggle} />}
     </div>
   );
 };

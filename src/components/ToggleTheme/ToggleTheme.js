@@ -1,18 +1,23 @@
+import { useState } from 'react';
 import styles from './ToggleTheme.module.scss';
 
-const ToggleTheme = () => {
+const ToggleTheme = (props) => {
+  const [isCheched, setIsCheched] = useState(false);
 
   const checkboxChangeHandler = (event) => {
     const htmlTag = document.querySelector('html');
 
     if (event.target.checked) {
       htmlTag.setAttribute('dark', '');
+      setIsCheched(true);
     }
     else {
       htmlTag.removeAttribute('dark');
+      setIsCheched(false);
     }
-  }
 
+    props.onChangeToggle(isCheched);
+  }
   return (
     <div className={styles.box}>
       <input className={styles.input} onChange={checkboxChangeHandler} type="checkbox" id="darkmode-toggle" />

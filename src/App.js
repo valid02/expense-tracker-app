@@ -45,6 +45,7 @@ const DUMMY_EXPENSES = [
 
 const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const [isCheched, setIsCheched] = useState(false);
 
   const addExpenseHandler = expense => {
     setExpenses((prevExpenses) => {
@@ -52,10 +53,14 @@ const App = () => {
     })
   };
 
+  const changeToggleHandler = status => {
+    setIsCheched(!status);
+  }
+
   return (
     <div>
-      <ToggleTheme />
-      <NewExpense onAddExpense={addExpenseHandler} />
+      <ToggleTheme onChangeToggle={changeToggleHandler} />
+      <NewExpense onAddExpense={addExpenseHandler} chechedToggle={isCheched} />
       <Expenses items={expenses} />
     </div>
   );
