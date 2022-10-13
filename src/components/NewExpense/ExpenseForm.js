@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import { DateObject } from 'react-multi-date-picker';
 import "react-multi-date-picker/styles/backgrounds/bg-dark.css";
 import styles from './ExpenseForm.module.scss';
 import PN from "persian-number";
@@ -23,13 +24,24 @@ const ExpenseForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    const date_fa = new DateObject({
+      date: enteredDate,
+      calendar: persian,
+      locale: persian_fa
+    })
+
     const expenseData = {
       title: enteredTitle.trim(),
       amount: enteredAmount,
-      date: new Date(enteredDate)
+      date: {
+        day: date_fa.day,
+        monthName: date_fa.month.name,
+        monthNumber: date_fa.month.number,
+        year: date_fa.year
+      }
     };
 
-    props.onSaveExpenseData(expenseData); 
+    props.onSaveExpenseData(expenseData);
 
     setEnteredTitle('');
     setEnteredAmount('');
