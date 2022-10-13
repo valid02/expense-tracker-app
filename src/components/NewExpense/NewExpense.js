@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import ExpenseForm from './ExpenseForm';
-import './NewExpense.css';
+import styles from './NewExpense.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -28,11 +28,11 @@ const NewExpense = (props) => {
   }
 
   return (
-    <div className="new-expense">
+    <div className={styles.newExpense}>
       {!isEditing && (
         <>
-          <span className='new-expense__title'>اضافه کردن هزینه جدید</span>
-          <button onClick={startEditingHandler} title="اضافه کردن هزینه جدید">
+          <span className={styles.newExpense__title}>اضافه کردن هزینه جدید</span>
+          <button className={styles.newExpense__button} onClick={startEditingHandler} title="اضافه کردن هزینه جدید">
             <FontAwesomeIcon icon={faPlus} />
           </button>
         </>

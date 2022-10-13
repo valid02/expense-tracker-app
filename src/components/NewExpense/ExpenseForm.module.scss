@@ -1,0 +1,62 @@
+.newExpense {
+
+  &__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: right;
+  }
+
+  &__control {
+    @media (max-width: 380px) {
+      width: 100%;
+    }
+  }
+  
+  &__label {
+    color: var(--text-color-1);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  &__input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    background-color: var(--bg-color-1);
+    color: var(--text-color-1);
+    border: 1px solid #919191;
+    outline: none;
+    width: 20rem;
+
+    @media (max-width: 380px) {
+      width: 100%;
+    }
+  }
+  
+  &__actions {
+    text-align: right;
+  }
+
+  &__button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid var(--btn-bg-color);
+    background-color: var(--btn-bg-color);
+    color: var(--color-white);
+    border-radius: 12px;
+    margin: .5rem;
+
+    &:hover,
+    &:active {
+      background-color: var(--btn-hover-bg-color);
+      border-color: var(--btn-hover-bg-color);
+    }
+
+    @media (max-width: 400px) {
+      padding: .8rem 1.8rem;
+    }
+  }
+}

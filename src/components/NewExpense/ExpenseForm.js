@@ -1,10 +1,11 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import "react-multi-date-picker/styles/backgrounds/bg-dark.css";
-import './ExpenseForm.css';
+import styles from './ExpenseForm.module.scss';
+import PN from "persian-number";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState('')
@@ -18,10 +19,6 @@ const ExpenseForm = (props) => {
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
   }
-
-  // const dateChangeHandler = (event) => {
-  //   setEnteredDate(event.target.value);
-  // }
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -43,29 +40,54 @@ const ExpenseForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <div className="new-expense__controls">
-        <div className="new-expense__control">
-          <label>عنوان</label>
-          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+      <div className={styles.newExpense__controls}>
+        <div className={styles.newExpense__control}>
+          <label className={styles.newExpense__label}>عنوان</label>
+          <input 
+            className={styles.newExpense__input} 
+            type="text" 
+            value={enteredTitle} 
+            onChange={titleChangeHandler} 
+          />
         </div>
-        <div className="new-expense__control">
-          <label>قیمت</label>
-          <input type="number" min="0.01" step="0.01" value={enteredAmount} onChange={amountChangeHandler} />
-        </div>
-        <div className='new-expense__control'>
-          <label>تاریخ</label>
+        <div className={styles.newExpense__control}>
+          <label className={styles.newExpense__label}>تاریخ</label>
           <DatePicker
+            containerStyle={{
+              width: '100%',
+            }}
+            inputClass={styles.newExpense__input}
             className={props.checkedToggle ? 'bg-dark' : ''}
             weekDays={weekDays}
             calendar={persian}
             locale={persian_fa}
             calendarPosition="bottom-right"
+            onChange={setEnteredDate}
+            value={enteredDate}
+          />
+        </div>
+        <div className={styles.newExpense__control}>
+          <label
+            className={styles.newExpense__label}>
+            قیمت ({ PN.convert(enteredAmount)} {<b>تومان</b>})
+          </label>
+          <input
+            className={styles.newExpense__input}
+            type="number" 
+            min="1" 
+            step="1" 
+            value={enteredAmount} 
+            onChange={amountChangeHandler} 
           />
         </div>
       </div>
-      <div className="new-expense__actions">
-        <button type="button" onClick={props.onCancel}>لغو</button>
-        <button type="submit">اضافه کردن</button>
+      <div className={styles.newExpense__actions}>
+        <button className={styles.newExpense__button} type="button" onClick={props.onCancel}>
+          لغو
+        </button>
+        <button className={styles.newExpense__button} type="submit">
+          اضافه کردن
+        </button>
       </div>
     </form>
   );

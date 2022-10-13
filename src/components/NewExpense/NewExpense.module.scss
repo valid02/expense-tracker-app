@@ -1,0 +1,33 @@
+.newExpense {
+  background-color: var(--bg-color-2);
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 50rem;
+  max-width: 95%;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+
+  &__title {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-color-1);
+  }
+
+  &__button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid var(--btn-bg-color);
+    background-color: var(--btn-bg-color);
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+
+    &:hover,
+    &:active {
+      background-color: var(--btn-hover-bg-color);
+      border-color: var(--btn-hover-bg-color);
+    }
+  }
+}
